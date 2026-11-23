@@ -2,13 +2,15 @@
 #include "src/lexer/lexer.hpp"
 
 int main() {
-    std::string source = "     let x";
+    std::string source = "idade 12345";
 
     Lexer lexer(source);
 
-    lexer.prepareNextChar();
+    Token firstToken = lexer.nextToken();
+    Token secondToken = lexer.nextToken();
 
-    std::cout << lexer.readCurrentChar() << std::endl;
+    std::cout << "Primeiro token: " << firstToken.value << std::endl;
+    std::cout << "Segundo token: " << secondToken.value << std::endl;
 
     return 0;
 }

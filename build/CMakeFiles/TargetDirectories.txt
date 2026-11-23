@@ -1,3 +1,0 @@
-/home/meiryanne/Documentos/aplicações em javascript/js-engine/build/CMakeFiles/js-engine.dir
-/home/meiryanne/Documentos/aplicações em javascript/js-engine/build/CMakeFiles/edit_cache.dir
-/home/meiryanne/Documentos/aplicações em javascript/js-engine/build/CMakeFiles/rebuild_cache.dir

@@ -12,10 +12,16 @@ private:
     char currentChar() const;
     void advance();
     void skipWhitespace();
+    bool isAlpha(char character) const;
+    bool isDigit(char character) const;
+
+    Token readNumber();
+    Token readIdentifier();
 
 public:
     explicit Lexer(const std::string& source);
     void prepareNextChar();
+    Token nextToken();
     char readCurrentChar() {
     char character = currentChar();
     advance();
