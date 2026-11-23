@@ -1,5 +1,14 @@
+
 #include "lexer.hpp"
 #include <cctype>
+#include <unordered_map>
+
+const std::unordered_map<std::string, TokenType> keywords = {
+    {"let", TokenType::LET},
+    {"const", TokenType::CONST},
+    {"var", TokenType::VAR},
+    {"function", TokenType::FUNCTION},
+    {"return", TokenType::RETURN}};
 
 Lexer::Lexer(const std::string &source)
     : source(source), position(0)
@@ -57,9 +66,11 @@ Token Lexer::readIdentifier()
         advance();
     }
 
-    if (value == "let")
+    auto it = keywords.find(value);
+
+    if (it != keywords.end())
     {
-        return {TokenType::LET, value};
+        return {it->second, value};
     }
 
     return {TokenType::IDENTIFIER, value};
