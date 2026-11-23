@@ -14,6 +14,8 @@ private:
     char currentChar() const;
     void advance();
     void skipWhitespace();
+    void skipLineComment();
+    bool skipBlockComment();
 
 public:
     explicit Lexer(const std::string& source);

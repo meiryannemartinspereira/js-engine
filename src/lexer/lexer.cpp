@@ -39,9 +39,57 @@ void Lexer::prepareNextChar()
     skipWhitespace();
 }
 
+void Lexer::skipLineComment()
+{
+    while (currentChar() != '\n' && currentChar() != '\0')
+    {
+        advance();
+    }
+}
+
+bool Lexer::skipBlockComment()
+{
+    advance();
+    advance();
+
+    while (currentChar() != '\0')
+    {
+        if (currentChar() == '*' &&
+            position + 1 < source.length() &&
+            source[position + 1] == '/')
+        {
+            advance();
+            advance();
+            return true;
+        }
+
+        advance();
+    }
+
+    return false;
+}
+
 Token Lexer::nextToken()
 {
     skipWhitespace();
+
+    if (currentChar() == '/' && position + 1 < source.length() && source[position + 1] == '/')
+    {
+        skipLineComment();
+        return nextToken();
+    }
+
+    if (currentChar() == '/' &&
+        position + 1 < source.length() &&
+        source[position + 1] == '*')
+    {
+        if (!skipBlockComment())
+        {
+            return {TokenType::INVALID, "Unterminated block comment"};
+        }
+
+        return nextToken();
+    }
 
     char character = currentChar();
 
@@ -81,7 +129,7 @@ Token Lexer::nextToken()
     {
         return OperatorReader::read(source, position);
     }
-    
+
     if (character == '=')
     {
         advance();
@@ -134,5 +182,4 @@ Token Lexer::nextToken()
 
     advance();
     return {TokenType::INVALID, std::string(1, character)};
-
 }

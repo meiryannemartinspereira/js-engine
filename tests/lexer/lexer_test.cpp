@@ -5,7 +5,7 @@
 
 void LexerTest::run()
 {
-    std::string source = "total _total $resultado valor_1 $item123";
+    std::string source = "let total = 10; /* comentario sem fechamento";
     Lexer lexer(source);
 
     while (true)
