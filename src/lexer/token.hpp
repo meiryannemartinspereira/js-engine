@@ -3,8 +3,13 @@
 
 #include <string>
 
-enum class TokenType {
+enum class TokenType
+{
     LET,
+    CONST,
+    VAR,
+    FUNCTION,
+    RETURN,
     IDENTIFIER,
     NUMBER,
     STRING,
@@ -14,7 +19,8 @@ enum class TokenType {
     END_OF_FILE
 };
 
-struct Token {
+struct Token
+{
     TokenType type;
     std::string value;
 };

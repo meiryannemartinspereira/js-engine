@@ -57,6 +57,11 @@ Token Lexer::readIdentifier()
         advance();
     }
 
+    if (value == "let")
+    {
+        return {TokenType::LET, value};
+    }
+
     return {TokenType::IDENTIFIER, value};
 }
 
