@@ -3,7 +3,7 @@
 #include "readers/readers.hpp"
 #include <cctype>
 
-Lexer::Lexer(const std::string& source)
+Lexer::Lexer(const std::string &source)
     : source(source), position(0)
 {
 }
@@ -85,7 +85,46 @@ Token Lexer::nextToken()
         advance();
         return {TokenType::SEMICOLON, ";"};
     }
+    switch (character)
+    {
+    case ';':
+        advance();
+        return {TokenType::SEMICOLON, ";"};
+
+    case ',':
+        advance();
+        return {TokenType::COMMA, ","};
+
+    case '.':
+        advance();
+        return {TokenType::DOT, "."};
+
+    case '(':
+        advance();
+        return {TokenType::LEFT_PAREN, "("};
+
+    case ')':
+        advance();
+        return {TokenType::RIGHT_PAREN, ")"};
+
+    case '{':
+        advance();
+        return {TokenType::LEFT_BRACE, "{"};
+
+    case '}':
+        advance();
+        return {TokenType::RIGHT_BRACE, "}"};
+
+    case '[':
+        advance();
+        return {TokenType::LEFT_BRACKET, "["};
+
+    case ']':
+        advance();
+        return {TokenType::RIGHT_BRACKET, "]"};
+    }
 
     advance();
     return {TokenType::INVALID, std::string(1, character)};
+
 }

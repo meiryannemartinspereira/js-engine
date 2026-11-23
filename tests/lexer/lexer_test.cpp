@@ -5,7 +5,7 @@
 
 void LexerTest::run()
 {
-    std::string source = "a + b - c * d / e % f ++ -- x += 1 @ 20 y -= 2 z *= 3 q /= 4 r %= 5 a == b === c != d !== e > f < g >= h <= i && j || k ! l & |;";
+    std::string source = "( ) { } [ ] , . ;";
     Lexer lexer(source);
 
     while (true)

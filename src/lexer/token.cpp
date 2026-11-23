@@ -46,8 +46,20 @@ std::string tokenTypeToString(TokenType type)
     case TokenType::NOT: return "NOT";
 
     case TokenType::SEMICOLON: return "SEMICOLON";
+    case TokenType::COMMA: return "COMMA";
+    case TokenType::DOT: return "DOT";
+
+    case TokenType::LEFT_PAREN: return "LEFT_PAREN";
+    case TokenType::RIGHT_PAREN: return "RIGHT_PAREN";
+
+    case TokenType::LEFT_BRACE: return "LEFT_BRACE";
+    case TokenType::RIGHT_BRACE: return "RIGHT_BRACE";
+
+    case TokenType::LEFT_BRACKET: return "LEFT_BRACKET";
+    case TokenType::RIGHT_BRACKET: return "RIGHT_BRACKET";
     case TokenType::INVALID: return "INVALID";
     case TokenType::END_OF_FILE: return "END_OF_FILE";
+    
     }
 
     return "UNKNOWN";
