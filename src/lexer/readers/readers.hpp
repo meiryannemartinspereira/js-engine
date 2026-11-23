@@ -17,6 +17,12 @@ public:
     static Token read(const std::string& source, size_t& position);
 };
 
+class StringReader
+{
+public:
+    static Token read(const std::string& source, size_t& position);
+};
+
 class OperatorReader
 {
 public:

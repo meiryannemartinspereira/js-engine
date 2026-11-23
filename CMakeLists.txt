@@ -14,5 +14,6 @@ add_executable(js-engine
     src/lexer/readers/identifier_reader.cpp
     src/lexer/readers/number_reader.cpp
     src/lexer/readers/operator_reader.cpp
+    src/lexer/readers/string_reader.cpp
     tests/lexer/lexer_test.cpp
 )

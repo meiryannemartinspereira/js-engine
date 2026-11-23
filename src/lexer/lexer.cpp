@@ -60,6 +60,11 @@ Token Lexer::nextToken()
         return NumberReader::read(source, position);
     }
 
+    if (character == '"' || character == '\'' || character == '`')
+    {
+        return StringReader::read(source, position);
+    }
+
     if (character == '+' ||
         character == '-' ||
         character == '*' ||
@@ -74,6 +79,7 @@ Token Lexer::nextToken()
     {
         return OperatorReader::read(source, position);
     }
+    
     if (character == '=')
     {
         advance();
