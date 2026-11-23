@@ -47,6 +47,7 @@ enum class TokenType
     NOT,
 
     SEMICOLON,
+    INVALID,
     END_OF_FILE
 };
 

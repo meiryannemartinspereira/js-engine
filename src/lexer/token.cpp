@@ -46,6 +46,7 @@ std::string tokenTypeToString(TokenType type)
     case TokenType::NOT: return "NOT";
 
     case TokenType::SEMICOLON: return "SEMICOLON";
+    case TokenType::INVALID: return "INVALID";
     case TokenType::END_OF_FILE: return "END_OF_FILE";
     }
 

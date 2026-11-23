@@ -86,5 +86,6 @@ Token Lexer::nextToken()
         return {TokenType::SEMICOLON, ";"};
     }
 
-    return {TokenType::END_OF_FILE, ""};
+    advance();
+    return {TokenType::INVALID, std::string(1, character)};
 }

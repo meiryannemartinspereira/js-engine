@@ -144,5 +144,5 @@ Token OperatorReader::read(const std::string& source, size_t& position)
         break;
     }
 
-    return {TokenType::END_OF_FILE, ""};
+    return {TokenType::INVALID, std::string(1, character)};
 }
