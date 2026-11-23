@@ -1,3 +1,4 @@
+
 #include "readers.hpp"
 
 Token StringReader::read(const std::string& source, size_t& position)
@@ -7,18 +8,53 @@ Token StringReader::read(const std::string& source, size_t& position)
 
     position++;
 
-    while (position < source.length() && source[position] != delimiter)
+    while (position < source.length())
     {
-        value += source[position];
+        char character = source[position];
+
+        if (character == '\\')
+        {
+            position++;
+
+            if (position >= source.length())
+            {
+                return {TokenType::INVALID, value};
+            }
+
+            char escaped = source[position];
+
+            switch (escaped)
+            {
+            case 'n':
+                value += '\n';
+                break;
+
+            case 't':
+                value += '\t';
+                break;
+
+            case 'r':
+                value += '\r';
+                break;
+
+            default:
+                value += escaped;
+                break;
+            }
+
+            position++;
+            continue;
+        }
+
+        if (character == delimiter)
+        {
+            position++;
+            return {TokenType::STRING, value};
+        }
+
+        value += character;
         position++;
     }
 
-    if (position >= source.length())
-    {
-        return {TokenType::INVALID, value};
-    }
-
-    position++;
-
-    return {TokenType::STRING, value};
+    return {TokenType::INVALID, value};
 }

@@ -5,7 +5,7 @@
 
 void LexerTest::run()
 {
-    std::string source = "\"Olá, mundo!\" 'JavaScript' `Minha engine tá ganhando vida`";
+    std::string source = "\"\" '' ``";
     Lexer lexer(source);
 
     while (true)
