@@ -9,8 +9,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(js-engine
     main.cpp
+    src/lexer/token.cpp
     src/lexer/lexer.cpp
     src/lexer/readers/identifier_reader.cpp
     src/lexer/readers/number_reader.cpp
     src/lexer/readers/operator_reader.cpp
+    tests/lexer/lexer_test.cpp
 )

@@ -64,11 +64,16 @@ Token Lexer::nextToken()
         character == '-' ||
         character == '*' ||
         character == '/' ||
-        character == '%')
+        character == '%' ||
+        character == '=' ||
+        character == '!' ||
+        character == '>' ||
+        character == '<' ||
+        character == '&' ||
+        character == '|')
     {
         return OperatorReader::read(source, position);
     }
-
     if (character == '=')
     {
         advance();
