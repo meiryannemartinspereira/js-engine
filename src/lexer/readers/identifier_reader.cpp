@@ -12,7 +12,9 @@ Token IdentifierReader::read(const std::string& source, size_t& position)
         char character = source[position];
 
         if (!std::isalpha(static_cast<unsigned char>(character)) &&
-            !std::isdigit(static_cast<unsigned char>(character)))
+            !std::isdigit(static_cast<unsigned char>(character)) &&
+            character != '_' &&
+            character != '$')
         {
             break;
         }

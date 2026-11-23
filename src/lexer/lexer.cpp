@@ -50,7 +50,9 @@ Token Lexer::nextToken()
         return {TokenType::END_OF_FILE, ""};
     }
 
-    if (std::isalpha(static_cast<unsigned char>(character)))
+    if (std::isalpha(static_cast<unsigned char>(character)) ||
+        character == '_' ||
+        character == '$')
     {
         return IdentifierReader::read(source, position);
     }
