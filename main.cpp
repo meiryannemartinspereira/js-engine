@@ -3,7 +3,6 @@
 
 int main() {
     std::string source = "idade 12345";
-
     Lexer lexer(source);
 
     Token firstToken = lexer.nextToken();
