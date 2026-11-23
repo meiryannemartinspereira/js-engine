@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 3.20)
 
 project(JavaScriptEngine LANGUAGES CXX)
@@ -9,4 +10,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(js-engine
     main.cpp
     src/lexer/lexer.cpp
+    src/lexer/readers/identifier_reader.cpp
+    src/lexer/readers/number_reader.cpp
+    src/lexer/readers/operator_reader.cpp
 )
