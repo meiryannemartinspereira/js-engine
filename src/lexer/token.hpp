@@ -15,6 +15,10 @@ enum class TokenType
     STRING,
     EQUAL,
     PLUS,
+    MINUS,
+    MULTIPLY,
+    DIVIDE,
+    MODULO,
     SEMICOLON,
     END_OF_FILE
 };

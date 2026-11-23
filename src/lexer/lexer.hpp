@@ -17,6 +17,7 @@ private:
 
     Token readNumber();
     Token readIdentifier();
+    Token readOperator();   
 
 public:
     explicit Lexer(const std::string& source);
