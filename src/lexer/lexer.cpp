@@ -76,6 +76,18 @@ Token Lexer::nextToken()
         return readNumber();
     }
 
+    if (character == '=')
+    {
+        advance();
+        return {TokenType::EQUAL, "="};
+    }
+
+    if (character == ';')
+    {
+        advance();
+        return {TokenType::SEMICOLON, ";"};
+    }
+
     return {TokenType::END_OF_FILE, ""};
 }
 
