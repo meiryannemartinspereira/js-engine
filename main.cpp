@@ -1,9 +1,8 @@
-
-#include "tests/lexer/lexer_test.hpp"
+#include "tests/parser/parser_test.hpp"
 
 int main()
 {
-    LexerTest test;
+    ParserTest test;
     test.run();
 
     return 0;
