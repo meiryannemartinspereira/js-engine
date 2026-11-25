@@ -12,6 +12,7 @@ private:
     void expect(TokenType type);
     void advance();
     void parseVariableDeclaration();
+    void parseExpression();
 
 public:
     explicit Parser(Lexer& lexer);
