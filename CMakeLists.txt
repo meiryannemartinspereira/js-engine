@@ -21,4 +21,5 @@ add_executable(js-engine
     tests/lexer/lexer_test.cpp
     tests/parser/parser_test.cpp
     tests/ast/ast_test.cpp
+    tests/interpreter/interpreter_test.cpp
 )

@@ -6,6 +6,7 @@
 #include "src/ast/ast_printer.hpp"
 #include "src/ast/variable_declaration.hpp"
 #include "src/interpreter/interpreter.hpp"
+#include "tests/interpreter/interpreter_test.hpp"
 #include <iostream>
 #include <string>
 
@@ -17,6 +18,9 @@ int main()
     ASTTest astTest;
     astTest.run();
 
+    InterpreterTest interpreterTest;
+    interpreterTest.run();
+    
     std::string source = "let resultado = 2 + 3 * 4;";
 
     Lexer lexer(source);
