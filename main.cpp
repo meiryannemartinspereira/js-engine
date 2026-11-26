@@ -4,6 +4,8 @@
 #include "src/lexer/lexer.hpp"
 #include "src/parser/parser.hpp"
 #include "src/ast/ast_printer.hpp"
+#include "src/ast/variable_declaration.hpp"
+#include "src/interpreter/interpreter.hpp"
 #include <iostream>
 #include <string>
 
@@ -24,6 +26,16 @@ int main()
 
     ASTPrinter printer;
     printer.print(*program, std::cout);
+
+    auto* declaration = dynamic_cast<VariableDeclaration*>(
+        program->body[0].get()
+    );
+
+    Interpreter interpreter;
+
+    double result = interpreter.evaluate(*declaration->initializer);
+
+    std::cout << "Result: " << result << '\n';
 
     return 0;
 }
