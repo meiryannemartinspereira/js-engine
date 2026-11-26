@@ -16,6 +16,8 @@ add_executable(js-engine
     src/lexer/readers/operator_reader.cpp
     src/lexer/readers/string_reader.cpp
     src/parser/parser.cpp
+    src/ast/ast_printer.cpp
     tests/lexer/lexer_test.cpp
     tests/parser/parser_test.cpp
+    tests/ast/ast_test.cpp
 )

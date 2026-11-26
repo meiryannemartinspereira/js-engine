@@ -2,6 +2,9 @@
 #define PARSER_HPP
 
 #include "../lexer/lexer.hpp"
+#include "../ast/program.hpp"
+#include "../ast/ast_node.hpp"
+#include <memory>
 
 class Parser
 {
@@ -11,16 +14,17 @@ private:
 
     void expect(TokenType type);
     void advance();
-    void parseVariableDeclaration();
-    void parseExpression();
-    void parsePrimaryExpression();
-    void parseMultiplicativeExpression();
-    void parseAdditiveExpression();
+
+    std::unique_ptr<ASTNode> parseVariableDeclaration();
+    std::unique_ptr<ASTNode> parseExpression();
+    std::unique_ptr<ASTNode> parsePrimaryExpression();
+    std::unique_ptr<ASTNode> parseMultiplicativeExpression();
+    std::unique_ptr<ASTNode> parseAdditiveExpression();
 
 public:
     explicit Parser(Lexer& lexer);
     Token getCurrentToken() const;
-    void parseProgram(); 
+    std::unique_ptr<Program> parseProgram();
 };
 
 #endif
