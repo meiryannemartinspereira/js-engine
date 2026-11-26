@@ -13,6 +13,9 @@ private:
     void advance();
     void parseVariableDeclaration();
     void parseExpression();
+    void parsePrimaryExpression();
+    void parseMultiplicativeExpression();
+    void parseAdditiveExpression();
 
 public:
     explicit Parser(Lexer& lexer);

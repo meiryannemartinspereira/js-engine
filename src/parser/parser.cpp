@@ -45,15 +45,59 @@ void Parser::parseProgram()
     }
 }
 
-void Parser::parseExpression()
-{
+void Parser::parsePrimaryExpression(){
     if (currentToken.type == TokenType::NUMBER ||
         currentToken.type == TokenType::STRING ||
         currentToken.type == TokenType::IDENTIFIER)
     {
         advance();
         return;
+
+    }
+
+    if (currentToken.type == TokenType::LEFT_PAREN)
+    {
+        advance();
+        parseExpression();
+        expect(TokenType::RIGHT_PAREN);
+        return;
     }
 
     throw std::runtime_error("Invalid expression: " + currentToken.value);
+}
+
+void Parser::parseExpression()
+{
+    parseAdditiveExpression();
+}
+
+void Parser::parseMultiplicativeExpression()
+{
+    parsePrimaryExpression();
+
+    while (
+        currentToken.type == TokenType::MULTIPLY ||
+        currentToken.type == TokenType::DIVIDE ||
+        currentToken.type == TokenType::MODULO
+    )
+    {
+        advance();
+        parsePrimaryExpression();
+    }
+    
+}
+
+void Parser::parseAdditiveExpression()
+{
+    parseMultiplicativeExpression();
+
+    while (
+        currentToken.type == TokenType::PLUS ||
+        currentToken.type == TokenType::MINUS
+    )
+    {
+        advance();
+        parseMultiplicativeExpression();
+    }
+    
 }
